@@ -1,0 +1,27 @@
+import torch
+import torch.optim as optim
+
+PHASE1_SCHEME = 'MEBQAT-NonFewShot'
+
+WORKERS = 12
+DATASET = 'CIFAR10'
+DATASET_PATH = '/root/jsyoun_data/CIFAR-10/'
+MODEL_ARCH = 'MobileNetV2ForCIFAR'
+PRETRAINED = False
+Q_METHOD = 'SAT-modifiedW'
+Q_BITS_W_FIRST = 8
+Q_BITS_W_LAST = 8
+Q_BITS_A_LAST = 'same'
+LAST_EPOCH = 0
+LAST_BEST_AVG_ACC_VAL = 0.0
+EPOCHS = 600
+BATCH_SIZE = 256
+OUTER_OPTIM = optim.AdamW
+OUTER_OPTIM_KWARGS = {'lr': 5e-2}
+OUTER_LR_SCH = optim.lr_scheduler.CosineAnnealingLR
+OUTER_LR_SCH_KWARGS = {'T_max': 600}
+INNER_Q_SUBTASKS = 4
+Q_BITS_WA_GUARANTEED_LIST_GIVEN = [(None, None)]
+DISTILL_KNOWLEDGE = True
+SAVE_PERIOD = 1
+REPORT_PERIOD = 100
